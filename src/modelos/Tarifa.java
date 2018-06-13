@@ -14,19 +14,29 @@ import java.util.Date;
 public class Tarifa {
     private int cantidadIngresosSinSaldo;
     private Date fecha;
-    private float montoIngresado;
+    private float montoIngreso;
     private boolean esDeAbono;
 
     
-    public Tarifa(int cantidadIngresosSinSaldo, Date fecha, float montoIngresado, boolean esDeAbono) {
+    public Tarifa(int cantidadIngresosSinSaldo, Date fecha, float montoIngreso, boolean esDeAbono) {
         this.cantidadIngresosSinSaldo = cantidadIngresosSinSaldo;
         this.fecha = fecha;
-        this.montoIngresado = montoIngresado;
+        this.montoIngreso = montoIngreso;
         this.esDeAbono = esDeAbono;
     }
+
+    public Tarifa() {
+    }
     
-    
+    /**
+     * METODO SIN IMPLEMENTAR
+     */
     public void conocerTipoVehiculo() {
         
+    }
+
+    @Override
+    public String toString() {
+        return ( "Fecha: " + this.fecha + "\n" + "Monto Ingreso: " + this.montoIngreso + "\n" + "Abono: " + this.esDeAbono);
     }
 }

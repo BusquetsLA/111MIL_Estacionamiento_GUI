@@ -16,9 +16,12 @@ public class Vehiculo {
     public Vehiculo(String dominio) {
         this.dominio = dominio;
     }
+
+    public Vehiculo() {
+    }
     
     
-    public void conocerModelo() {
-        
+    public String conocerModelo() {
+        return "Dominio del vehiculo: " + this.dominio;
     }
 }

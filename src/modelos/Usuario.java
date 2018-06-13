@@ -5,6 +5,9 @@
  */
 package modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author utku33
@@ -14,6 +17,8 @@ public class Usuario {
     private String nombre;
     private String nombreUsuario;
     private String password;
+    // Atributos agregados
+    private List<Permiso> permisos;
 
     
     public Usuario(String apellido, String nombre, String nombreUsuario, String password) {
@@ -21,10 +26,25 @@ public class Usuario {
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;
         this.password = password;
+        this.permisos = new ArrayList();
+    }
+
+    public Usuario() {
     }
     
     
-    public void conocerPermisos() {
+    public String conocerPermisos() {
+        String retorno = "";
         
+        for(Permiso permiso: permisos) {
+            retorno += permiso.toString() + "\n";
+        }
+        
+        return retorno;
+    }
+
+    @Override
+    public String toString() {
+        return ( "Nombre: " + this.nombre + "\n" + "Apellido: " + this.apellido + "\n" + "NombreUsuario: " + this.nombreUsuario );
     }
 }

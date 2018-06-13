@@ -5,7 +5,9 @@
  */
 package modelos;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -17,6 +19,8 @@ public class AbonoPropietario {
     private float montoCobrado;
     private int nroComprobante;
     private float saldoActual;
+    // Atributos agregados
+    private List<Ingreso> ingresos;
 
     
     public AbonoPropietario(Date fecha, float montoCobrado, int nroComprobante, float saldoActual) {
@@ -24,19 +28,24 @@ public class AbonoPropietario {
         this.montoCobrado = montoCobrado;
         this.nroComprobante = nroComprobante;
         this.saldoActual = saldoActual;
+        this.ingresos = new ArrayList();
     }
 
     public AbonoPropietario() {
+        this.ingresos = new ArrayList();
     }
     
     
     
-    public void conocerIngreso() {
-        
+    public String conocerIngreso() {
+        String retorno = "Fecha: " + this.fecha + "\n" + "Hora: " + this.hora + "\n" + 
+                "Nro comprobante" + this.nroComprobante;
+    
+        return retorno;
     }
 
     public void mostrarFechaYHora() {
-        
+        System.out.println("Fecha: " + this.fecha + "\n" + "Hora: " + this.hora);
     }
 
     public void setFecha(Date fecha) {

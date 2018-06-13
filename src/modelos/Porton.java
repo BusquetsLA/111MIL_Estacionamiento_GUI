@@ -19,6 +19,9 @@ public class Porton {
         this.nombre = nombre;
     }
 
+    public Porton() {
+    }
+
     
     public String getDescripcion() {
         return descripcion;
@@ -35,5 +38,9 @@ public class Porton {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
+    @Override
+    public String toString() {
+        return ( "Descripcion: " + this.descripcion + "\n" + "Nombre: " + this.nombre );
+    }
 }

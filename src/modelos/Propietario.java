@@ -5,6 +5,9 @@
  */
 package modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author utku33
@@ -13,33 +16,46 @@ public class Propietario {
     private String apellido;
     private int dni;
     private String nombre;
+    // Atributos agregados
+    private AbonoPropietario abonoPropietario;
+    private List<Vehiculo> vehiculos;
+    private int ingresos;
 
     
     public Propietario(String apellido, int dni, String nombre) {
         this.apellido = apellido;
         this.dni = dni;
         this.nombre = nombre;
+        this.abonoPropietario = new AbonoPropietario();
+        this.vehiculos = new ArrayList();
     }
     
     
-    public void acreditarMonto() {
-        
+    public void acreditarMonto(float monto) {
+        this.abonoPropietario.setMontoCobrado(monto);
     }
     
-    public void calcularSaldoActual() {
-        
+    public float calcularSaldoActual() {
+        return this.abonoPropietario.getSaldoActual();
     }
     
-    public void conocerVehiculo() {
+    public String conocerVehiculo(Vehiculo vehiculo) {
+        String retorno = "";
+        for(Vehiculo vehiculoPropietario: vehiculos) {
+            if(vehiculoPropietario.equals(vehiculo)) {
+                retorno = vehiculoPropietario.conocerModelo();
+            }
+        }
         
+        return retorno;
     }
     
-    public void cuantosIngresosPeriodo() {
-        
+    public float cuantosIngresosPeriodo(int cantidad) {
+        return this.ingresos/cantidad;
     }
 
-    public void obtenerVehiculosPropietario() {
-        
+    public List<Vehiculo> obtenerVehiculosPropietario() {
+        return this.vehiculos;
     }
     
     public String getApellido() {

@@ -20,6 +20,11 @@ public class Ingreso {
     private float monto;
     private int nroTicket;
     private String observacion;
+    // Atributos agregados
+    private Porton porton;
+    private Tarifa tarifa;
+    private Usuario usuario;
+    private Vehiculo vehiculo;
 
     
     public Ingreso(String codigoBarra, Date fechaEgreso, Date fechaIngreso, Date horaEgreso, Date horaIngreso, float monto, int nroTicket, String observacion) {
@@ -31,25 +36,32 @@ public class Ingreso {
         this.monto = monto;
         this.nroTicket = nroTicket;
         this.observacion = observacion;
+        this.porton = new Porton();
+        this.tarifa = new Tarifa();
+        this.usuario = new Usuario();
+        this.vehiculo = new Vehiculo();
     }
     
     
-    public void conocerPorton() {
-        
+    public String conocerPorton() {
+        return this.porton.toString();
     }
     
-    public void conocerTarifa() {
-        
+    public String conocerTarifa() {
+        return this.tarifa.toString();
     }
     
-    public void conocerUsuario() {
-        
+    public String conocerUsuario() {
+        return this.usuario.toString();
     }
     
-    public void conocerVehiculo() {
-        
+    public String conocerVehiculo() {
+        return this.vehiculo.conocerModelo();
     }
     
+    /**
+     * METODO SIN IMPLEMENTAR
+     */
     public void determinarNroIngreso() {
         
     }

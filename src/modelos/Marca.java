@@ -5,20 +5,26 @@
  */
 package modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author utku33
  */
 public class Marca {
     private String nombre;
-
+    // Atributos agregados
+    private List<Modelo> modelos;
+    
     
     public Marca(String nombre) {
         this.nombre = nombre;
+        this.modelos = new ArrayList();
     }
     
     
-    public void conocerModelo() {
-        
+    public String conocerModelo() {
+        return "Nombre: " + this.nombre;
     }
 }
