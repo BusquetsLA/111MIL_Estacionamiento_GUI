@@ -20,6 +20,6 @@ public class PresentadorCA implements ContratoPresentadorCA {
     
     @Override
     public void iniciar() {
-        
+        this.vista.mostrarVista();
     }
 }

@@ -9,23 +9,17 @@ package modelos;
  *
  * @author utku33
  */
-public class Modelo {
-    private String nombre;
-
+public enum Modelo {
     
-    public Modelo(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Modelo() {
-    }
-
+    CORSA_1(Marca.FIAT, 33),
+    POLO_2(Marca.AUDI, 45);
     
-    public String getNombre() {
-        return nombre;
+    private Marca marca;
+    private int codigo;
+    
+    Modelo(Marca marca, int codigoModelo) {
+        this.marca = marca;
+        this.codigo = codigoModelo;
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    
 }

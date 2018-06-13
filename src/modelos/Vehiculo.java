@@ -19,14 +19,16 @@ public class Vehiculo {
     public Vehiculo(String dominio) {
         this.dominio = dominio;
         this.tipoVehiculo = new TipoVehiculo();
-        this.modelo = new Modelo();
     }
 
     public Vehiculo() {
         this.tipoVehiculo = new TipoVehiculo();
-        this.modelo = new Modelo();
     }
     
+    
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
+    }
     
     public String conocerModelo() {
         return "Dominio del vehiculo: " + this.dominio;

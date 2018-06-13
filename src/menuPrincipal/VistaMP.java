@@ -6,6 +6,7 @@
 package menuPrincipal;
 
 import estacionamiento.ContratoControladorVistas;
+import static metodosUtiles.Metodos.validarNumero;
 
 /**
  *
@@ -26,13 +27,15 @@ public class VistaMP implements ContratoVistaMP {
     @Override
     public void mostrarMenu() {
         System.out.println("*** Menu Principal ***");
+        System.out.println("Ingrese una de las opciones...");
         System.out.println("1. Registrar cobro de abono de estacionamiento");
+        
+        int opcionSeleccionada = validarNumero(1, 1, "Ingrese un numero:");
+        this.presentador.procesarOpcion(opcionSeleccionada);
     }
 
     @Override
     public void lanzarCobroDeAbono() {
         this.controlador.lanzarCobroDeAbono();
     }
-    
-    
 }

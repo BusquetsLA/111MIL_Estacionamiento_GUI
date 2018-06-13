@@ -22,4 +22,12 @@ public class PresentadorMP implements ContratoPresentadorMP {
     public void iniciar() {
         this.vista.mostrarMenu();
     }
+    
+    public void procesarOpcion(int opcion) {
+        switch(opcion) {
+            case 1:
+                this.vista.lanzarCobroDeAbono();
+                break;
+        }
+    }
 }

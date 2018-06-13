@@ -12,5 +12,6 @@ package menuPrincipal;
 public interface ContratoPresentadorMP {
     
     public void iniciar();
+    public void procesarOpcion(int opcion);
     
 }

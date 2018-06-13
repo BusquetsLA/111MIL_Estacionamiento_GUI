@@ -10,5 +10,7 @@ package cobroDeAbono;
  * @author utku33
  */
 public interface ContratoVistaCA {
+ 
+    public void mostrarVista();
     
 }

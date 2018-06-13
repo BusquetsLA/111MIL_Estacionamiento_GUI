@@ -21,4 +21,10 @@ public class VistaCA implements ContratoVistaCA {
         this.presentador = new PresentadorCA(this);
         this.presentador.iniciar();
     }
+    
+    
+    @Override
+    public void mostrarVista() {
+        
+    }
 }
