@@ -11,13 +11,20 @@ package modelos;
  */
 public class Vehiculo {
     private String dominio;
+    // Atributos agregados
+    private TipoVehiculo tipoVehiculo;
+    private Modelo modelo;
 
     
     public Vehiculo(String dominio) {
         this.dominio = dominio;
+        this.tipoVehiculo = new TipoVehiculo();
+        this.modelo = new Modelo();
     }
 
     public Vehiculo() {
+        this.tipoVehiculo = new TipoVehiculo();
+        this.modelo = new Modelo();
     }
     
     

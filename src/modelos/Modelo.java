@@ -17,6 +17,9 @@ public class Modelo {
         this.nombre = nombre;
     }
 
+    public Modelo() {
+    }
+
     
     public String getNombre() {
         return nombre;

@@ -19,6 +19,9 @@ public class TipoVehiculo {
         this.nombre = nombre;
     }
 
+    public TipoVehiculo() {
+    }
+
     
     public String getDescripcion() {
         return descripcion;
