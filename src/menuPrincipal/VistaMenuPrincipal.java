@@ -12,14 +12,14 @@ import static metodosUtiles.Metodos.validarNumero;
  *
  * @author utku33
  */
-public class VistaMP implements ContratoVistaMP {
+public class VistaMenuPrincipal implements ContratoVistaMenuPrincipal {
     private ContratoControladorVistas controlador;
-    private ContratoPresentadorMP presentador;
+    private ContratoPresentadorMenuPrincipal presentador;
 
     
-    public VistaMP(ContratoControladorVistas controlador) {
+    public VistaMenuPrincipal(ContratoControladorVistas controlador) {
         this.controlador = controlador;
-        this.presentador = new PresentadorMP(this);
+        this.presentador = new PresentadorMenuPrincipal(this);
         this.presentador.iniciar();
     }
     
@@ -28,14 +28,21 @@ public class VistaMP implements ContratoVistaMP {
     public void mostrarMenu() {
         System.out.println("*** Menu Principal ***");
         System.out.println("Ingrese una de las opciones...");
-        System.out.println("1. Registrar cobro de abono de estacionamiento");
+        System.out.println("1. Registrar cobro de abono");
+        System.out.println("2. Opciones de Administrador");
         
-        int opcionSeleccionada = validarNumero(1, 1, "Ingrese un numero:");
+        int opcionSeleccionada = validarNumero(0, 3, "Ingrese un numero:");
         this.presentador.procesarOpcion(opcionSeleccionada);
     }
 
     @Override
     public void lanzarCobroDeAbono() {
         this.controlador.lanzarCobroDeAbono();
+    }
+    
+    @Override
+    public void lanzarAdministracion() {
+        // this.controlador.lanzarAdministracion();
+        System.out.println("No implementado aun ...");
     }
 }

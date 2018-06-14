@@ -67,6 +67,10 @@ public class AbonoPropietario {
     public void setHora(Date hora) {
         this.hora = hora;
     }
+    
+    public void agregarSaldo(float monto) {
+        this.saldoActual += monto;
+    }
 
     public Date getFecha() {
         return fecha;

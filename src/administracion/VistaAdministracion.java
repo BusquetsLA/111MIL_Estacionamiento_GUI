@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cobroDeAbono;
+package administracion;
 
 /**
  *
- * @author utku33
+ * @author utku36
  */
-public interface ContratoPresentadorCA {
- 
-    public void iniciar();
+public class VistaAdministracion {
     
 }

@@ -43,7 +43,7 @@ public class Metodos {
 			    	
 			// CICLO: VERIFICA QUE CADA CARACTER DEL VALOR INGRESADO SEA UN NUMERO 
 			do {	
-                            System.out.println(peticion);
+                            System.out.print(peticion);
 			    cadena = scan.next();
 			        
 			    // CICLO: EVALUA CADA CODIGO ASCII DE CADA CARACTER DE LA CADENA INGRESADA
@@ -71,7 +71,7 @@ public class Metodos {
 			numero = Integer.parseInt(cadena);
 			j = 0;
 			h = 0;
-		} while (numero < minimo || numero > maximo);
+		} while (numero <= minimo || numero >= maximo);
 		
 		return numero;
 		

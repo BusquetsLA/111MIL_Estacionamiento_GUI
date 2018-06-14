@@ -5,34 +5,47 @@
  */
 package estacionamiento;
 
-import cobroDeAbono.ContratoVistaCA;
-import cobroDeAbono.VistaCA;
-import menuPrincipal.ContratoVistaMP;
-import menuPrincipal.VistaMP;
+import cobroAbono.ContratoVistaCobroAbono;
+import cobroAbono.VistaCobroAbono;
+import menuPrincipal.ContratoVistaMenuPrincipal;
+import menuPrincipal.VistaMenuPrincipal;
+import proveedor.ContratoFalsoProveedor;
+import proveedor.FalsoProveedor;
 
 /**
  *
  * @author utku33
  */
 public class Estacionamiento implements ContratoControladorVistas {
-    private ContratoVistaMP vistaMP;
-    private ContratoVistaCA vistaCA;
+    private ContratoVistaMenuPrincipal vistaMP;
+    private ContratoVistaCobroAbono vistaCA;
+    private ContratoFalsoProveedor proveedor;
+    
+    public Estacionamiento() {
+        this.proveedor = new FalsoProveedor();
+    }
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        Estacionamiento estacionamientoUTN = new Estacionamiento();
+        estacionamientoUTN.lanzarMenuPrincipal();
     }
-
+    
     @Override
-    public void lanzarMP() {
-        this.vistaMP = new VistaMP(this);
+    public void lanzarMenuPrincipal() {
+        this.vistaMP = new VistaMenuPrincipal(this);
     }
 
     @Override
     public void lanzarCobroDeAbono() {
-        this.vistaCA = new VistaCA(this);
+        this.vistaCA = new VistaCobroAbono(this);
+    }
+    
+    @Override
+    public ContratoFalsoProveedor getProveedor() {
+        return this.proveedor;
     }
     
 }

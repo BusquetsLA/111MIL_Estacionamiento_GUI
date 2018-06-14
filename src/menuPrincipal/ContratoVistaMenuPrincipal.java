@@ -9,9 +9,10 @@ package menuPrincipal;
  *
  * @author utku33
  */
-public interface ContratoPresentadorMP {
+public interface ContratoVistaMenuPrincipal {
     
-    public void iniciar();
-    public void procesarOpcion(int opcion);
+    public void mostrarMenu();
+    public void lanzarCobroDeAbono();
+    public void lanzarAdministracion();
     
 }

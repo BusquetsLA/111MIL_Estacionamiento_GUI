@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cobroDeAbono;
+package menuPrincipal;
 
 /**
  *
  * @author utku33
  */
-public interface ContratoVistaCA {
- 
-    public void mostrarVista();
+public interface ContratoPresentadorMenuPrincipal {
+    
+    public void iniciar();
+    public void procesarOpcion(int opcion);
     
 }

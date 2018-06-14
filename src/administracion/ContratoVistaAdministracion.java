@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package menuPrincipal;
+package administracion;
 
 /**
  *
- * @author utku33
+ * @author utku36
  */
-public interface ContratoVistaMP {
-    
-    public void mostrarMenu();
-    public void lanzarCobroDeAbono();
+public interface ContratoVistaAdministracion {
     
 }

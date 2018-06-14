@@ -9,11 +9,11 @@ package menuPrincipal;
  *
  * @author utku33
  */
-public class PresentadorMP implements ContratoPresentadorMP {
-    private ContratoVistaMP vista;
+public class PresentadorMenuPrincipal implements ContratoPresentadorMenuPrincipal {
+    private ContratoVistaMenuPrincipal vista;
 
     
-    public PresentadorMP(ContratoVistaMP vista) {
+    public PresentadorMenuPrincipal(ContratoVistaMenuPrincipal vista) {
         this.vista = vista;
     }
     
@@ -23,10 +23,14 @@ public class PresentadorMP implements ContratoPresentadorMP {
         this.vista.mostrarMenu();
     }
     
+    @Override
     public void procesarOpcion(int opcion) {
         switch(opcion) {
             case 1:
                 this.vista.lanzarCobroDeAbono();
+                break;
+            case 2:
+                this.vista.lanzarAdministracion();
                 break;
         }
     }

@@ -5,13 +5,16 @@
  */
 package estacionamiento;
 
+import proveedor.ContratoFalsoProveedor;
+
 /**
  *
  * @author utku33
  */
 public interface ContratoControladorVistas {
     
-    public void lanzarMP();
+    public void lanzarMenuPrincipal();
     public void lanzarCobroDeAbono();
+    public ContratoFalsoProveedor getProveedor();
     
 }

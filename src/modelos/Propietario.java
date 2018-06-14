@@ -22,7 +22,7 @@ public class Propietario {
     private int ingresos;
 
     
-    public Propietario(String apellido, int dni, String nombre) {
+    public Propietario(String nombre, String apellido, int dni) {
         this.apellido = apellido;
         this.dni = dni;
         this.nombre = nombre;
