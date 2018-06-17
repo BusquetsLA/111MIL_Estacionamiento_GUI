@@ -5,8 +5,9 @@
  */
 package cobroAbono;
 
+import modelos.AbonoPropietario;
 import modelos.Propietario;
-import proveedor.ContratoFalsoProveedor;
+import proveedorPropietarios.ContratoProveedorPropietarios;
 
 /**
  *
@@ -15,11 +16,11 @@ import proveedor.ContratoFalsoProveedor;
 public interface ContratoVistaCobroAbono {
  
     public void mostrarVista();
-    public ContratoFalsoProveedor getProveedor();
+    public ContratoProveedorPropietarios getProveedor();
     public void solicitarMonto();
     public int pedirConfirmacion(float monto);
     public void mostrarAcreditacionSaldos(float saldoAnterior, float saldoActual, float monto);
-    public void mostrarDatosPropietario(Propietario propietario);
+    public void mostrarDatosPropietario(Propietario propietario, AbonoPropietario abono);
     public void mostrarOperacionCancelada();
     public void mostrarPropietarioInexistente();
     public void lanzarMenuPrincipal();

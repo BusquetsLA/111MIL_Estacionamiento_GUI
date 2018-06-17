@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proveedor;
+package proveedorPropietarios;
 
 import java.util.HashMap;
 import modelos.AbonoPropietario;
@@ -13,9 +13,8 @@ import modelos.Propietario;
  *
  * @author utku36
  */
-public interface ContratoFalsoProveedor {
+public interface ContratoProveedorPropietarios {
     
-    public Propietario comprobarDNI(int dni);
     public HashMap<Propietario, AbonoPropietario> getPropietarios();
     
 }

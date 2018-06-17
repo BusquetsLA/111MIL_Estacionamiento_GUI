@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package menuPrincipal;
+package menuResponsableEstacionamiento;
 
 /**
  *
  * @author utku33
  */
-public interface ContratoPresentadorMenuPrincipal {
+public interface ContratoPresentadorMenuResponsableEstacionamiento {
     
     public void iniciar();
     public void procesarOpcion(int opcion);

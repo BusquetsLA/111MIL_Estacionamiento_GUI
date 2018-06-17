@@ -7,7 +7,7 @@ package cobroAbono;
 
 import modelos.AbonoPropietario;
 import modelos.Propietario;
-import proveedor.ContratoFalsoProveedor;
+import proveedorPropietarios.ContratoProveedorPropietarios;
 
 /**
  *
@@ -15,14 +15,15 @@ import proveedor.ContratoFalsoProveedor;
  */
 public class PresentadorCobroAbono implements ContratoPresentadorCobroAbono {
     private ContratoVistaCobroAbono vista;
-    private ContratoFalsoProveedor proveedor;
+    private ContratoProveedorPropietarios proveedorPropietarios;
     private int dni;
     private Propietario propietario;
+    private AbonoPropietario abonoPropietario;
 
     
     public PresentadorCobroAbono(ContratoVistaCobroAbono vista) {
         this.vista = vista;
-        this.proveedor = this.vista.getProveedor();
+        this.proveedorPropietarios = this.vista.getProveedor();
     }
     
     
@@ -33,11 +34,18 @@ public class PresentadorCobroAbono implements ContratoPresentadorCobroAbono {
     
     @Override
     public void procesarDNI(int dni) {
-        Propietario propietarioDNI = verificarDNI(dni);
+        Propietario propietarioDNI = this.verificarDNI(dni);
         this.dni = dni;
-        if(propietario != null) {
+        if(propietarioDNI != null) {
             this.propietario = propietarioDNI;
-            this.vista.mostrarDatosPropietario(this.propietario);
+            if(this.proveedorPropietarios.getPropietarios().get(this.propietario) == null) {
+                this.abonoPropietario = new AbonoPropietario();
+                this.proveedorPropietarios.getPropietarios().put(this.propietario, this.abonoPropietario);
+            }
+            else {
+                this.abonoPropietario = this.proveedorPropietarios.getPropietarios().get(this.propietario);
+            }
+            this.vista.mostrarDatosPropietario(this.propietario, this.abonoPropietario);
             this.vista.solicitarMonto();
         }
         else {
@@ -64,18 +72,22 @@ public class PresentadorCobroAbono implements ContratoPresentadorCobroAbono {
     }
     
     private Propietario verificarDNI(int dni) {
-        return this.proveedor.comprobarDNI(dni);
+        for(Propietario propietario : this.proveedorPropietarios.getPropietarios().keySet()) {
+            if(dni == propietario.getDni()) {
+                System.out.println("el metodo verificador anda");
+                return propietario;
+            }
+        }
+        return null;
     }
     
     private void actualizarMonto(float monto) {
-        AbonoPropietario abonoPropietario = this.proveedor.getPropietarios().get(this.propietario);
-        
-        float saldoAnterior = abonoPropietario.getSaldoActual();
-        abonoPropietario.agregarSaldo(monto);
-        float saldoActual = abonoPropietario.getSaldoActual();
+        float saldoAnterior = this.abonoPropietario.getSaldoActual();
+        this.abonoPropietario.agregarSaldo(monto);
+        float saldoActual = this.abonoPropietario.getSaldoActual();
 
         this.vista.mostrarAcreditacionSaldos(saldoAnterior, saldoActual, monto);
-        
+        this.vista.lanzarMenuPrincipal();
     }
     
     

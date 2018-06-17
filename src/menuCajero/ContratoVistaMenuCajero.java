@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package administracion;
+package menuCajero;
 
 /**
  *
- * @author utku36
+ * @author PC
  */
-public class VistaAdministracion {
+public interface ContratoVistaMenuCajero {
+    
+    public void mostrarMenu();
     
 }

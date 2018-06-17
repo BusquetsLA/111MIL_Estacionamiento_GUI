@@ -22,7 +22,7 @@ public class Metodos {
 	 * @author Agustin, Jose Luis.
 	 * @return
 	 */
-	public static int validarNumero(int minimo, int maximo, String peticion) {
+	public static int validarNumero(int minimo, int maximo) {
 		/*
 		 * INFO ADICIONAL:
 		 * El contador i itera para analizar cada elemento de la cadena.
@@ -43,7 +43,7 @@ public class Metodos {
 			    	
 			// CICLO: VERIFICA QUE CADA CARACTER DEL VALOR INGRESADO SEA UN NUMERO 
 			do {	
-                            System.out.print(peticion);
+                            System.out.print("> ");
 			    cadena = scan.next();
 			        
 			    // CICLO: EVALUA CADA CODIGO ASCII DE CADA CARACTER DE LA CADENA INGRESADA
@@ -71,7 +71,7 @@ public class Metodos {
 			numero = Integer.parseInt(cadena);
 			j = 0;
 			h = 0;
-		} while (numero <= minimo || numero >= maximo);
+		} while (numero < minimo || numero > maximo);
 		
 		return numero;
 		

@@ -8,8 +8,9 @@ package cobroAbono;
 import estacionamiento.ContratoControladorVistas;
 import java.util.Scanner;
 import static metodosUtiles.Metodos.validarNumero;
+import modelos.AbonoPropietario;
 import modelos.Propietario;
-import proveedor.ContratoFalsoProveedor;
+import proveedorPropietarios.ContratoProveedorPropietarios;
 
 /**
  *
@@ -29,15 +30,16 @@ public class VistaCobroAbono implements ContratoVistaCobroAbono {
     
     @Override
     public void mostrarVista() {
+        System.out.println("");
         System.out.println("*** COBRO DE ABONO DE ESTACIONAMIENTO ***");
         System.out.println("Ingrese DNI:");
-        int opcionIngresada = validarNumero(9999999, 100000000, "Ingrese el DNI del propietario: ");
-        this.presentador.procesarDNI(opcionIngresada);
+        int dni = validarNumero(10000000, 99999999);
+        this.presentador.procesarDNI(dni);
     }
     
     @Override
-    public ContratoFalsoProveedor getProveedor() {
-        return this.controlador.getProveedor();
+    public ContratoProveedorPropietarios getProveedor() {
+        return this.controlador.getProveedorPropietarios();
     }
     
     @Override
@@ -56,7 +58,7 @@ public class VistaCobroAbono implements ContratoVistaCobroAbono {
         System.out.println("1. Si");
         System.out.println("2. No");
         
-        int opcion = validarNumero(0, 3, "");
+        int opcion = validarNumero(1, 2);
         return opcion;
     }
     
@@ -70,11 +72,15 @@ public class VistaCobroAbono implements ContratoVistaCobroAbono {
     }
 
     @Override
-    public void mostrarDatosPropietario(Propietario propietario) {
+    public void mostrarDatosPropietario(Propietario propietario, AbonoPropietario abono) {
+        float saldoPropietario = abono.getSaldoActual();
+        
+        System.out.println("");
         System.out.println("*** Datos del propietario ***");
         System.out.println("Nombre: " + propietario.getNombre());
         System.out.println("Apellido: " + propietario.getApellido());
         System.out.println("DNI: " + propietario.getDni());
+        System.out.println("Saldo Actual: " + saldoPropietario);
     }
     
     @Override
@@ -90,6 +96,6 @@ public class VistaCobroAbono implements ContratoVistaCobroAbono {
     
     @Override
     public void lanzarMenuPrincipal() {
-        this.controlador.lanzarMenuPrincipal();
+        this.controlador.lanzarMenuResponsableEstacionamiento();
     }
 }

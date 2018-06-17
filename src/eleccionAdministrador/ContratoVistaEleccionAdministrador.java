@@ -3,23 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package estacionamiento;
+package eleccionAdministrador;
 
 import proveedorAdministradores.ContratoProveedorAdministradores;
-import proveedorPropietarios.ContratoProveedorPropietarios;
 
 /**
  *
- * @author utku33
+ * @author PC
  */
-public interface ContratoControladorVistas {
-    
-    public ContratoProveedorPropietarios getProveedorPropietarios();
+public interface ContratoVistaEleccionAdministrador {
+ 
     public ContratoProveedorAdministradores getProveedorAdministradores();
-    
+    public void mostrarMenu();
+    public void pedirDatosIngresoResponsableEstacionamiento();
+    public void pedirDatosIngresoCajero();
+    public void mostrarFinDePrograma();
+    public void mostrarIngresoDatosIncorrecto();
     public void lanzarMenuResponsableEstacionamiento();
-    public void lanzarCobroDeAbono();
-    public void lanzarEleccionAdministrador();
     public void lanzarMenuCajero();
     
 }

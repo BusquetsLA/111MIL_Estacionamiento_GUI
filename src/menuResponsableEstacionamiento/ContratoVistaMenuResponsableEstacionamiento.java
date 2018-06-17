@@ -3,16 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package menuPrincipal;
+package menuResponsableEstacionamiento;
 
 /**
  *
  * @author utku33
  */
-public interface ContratoVistaMenuPrincipal {
+public interface ContratoVistaMenuResponsableEstacionamiento {
     
     public void mostrarMenu();
     public void lanzarCobroDeAbono();
-    public void lanzarAdministracion();
+    public void lanzarMenuEleccionAdministrador();
+    public void mostrarFinDePrograma();
+    public void lanzarAdministrarPropietarios();
+    public void lanzarAdministrarVehiculos();
     
 }
