@@ -46,6 +46,12 @@ public class PresentadorAdministrarPropietarios implements ContratoPresentadorAd
                 int cantPropietarios = this.proveedor.getPropietarios().keySet().size();
                 this.vista.pedirEleccionPropietarioEliminar(cantPropietarios);
                 break;
+            case 4:
+                System.out.println("No implementado");
+                break;
+            case 5: 
+                this.vista.pedirDatosNuevoVehiculo();
+                break;
         }
     }
     

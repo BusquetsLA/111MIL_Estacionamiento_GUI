@@ -14,6 +14,7 @@ public class Vehiculo {
     // Atributos agregados
     private TipoVehiculo tipoVehiculo;
     private Modelo modelo;
+    private String patente;
 
     
     public Vehiculo(String dominio) {
@@ -33,4 +34,30 @@ public class Vehiculo {
     public String conocerModelo() {
         return "Dominio del vehiculo: " + this.dominio;
     }
+
+    public String getDominio() {
+        return dominio;
+    }
+
+    public void setDominio(String dominio) {
+        this.dominio = dominio;
+    }
+
+    public TipoVehiculo getTipoVehiculo() {
+        return tipoVehiculo;
+    }
+
+    public void setTipoVehiculo(TipoVehiculo tipoVehiculo) {
+        this.tipoVehiculo = tipoVehiculo;
+    }
+
+    public String getPatente() {
+        return patente;
+    }
+
+    public void setPatente(String patente) {
+        this.patente = patente;
+    }
+    
+    
 }

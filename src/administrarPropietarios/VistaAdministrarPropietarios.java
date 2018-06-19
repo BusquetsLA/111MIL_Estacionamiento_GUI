@@ -6,8 +6,11 @@
 package administrarPropietarios;
 
 import estacionamiento.ContratoControladorVistas;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import static metodosUtiles.Metodos.validarNumero;
+import modelos.Marca;
 import modelos.Propietario;
 import proveedorPropietarios.ContratoProveedorPropietarios;
 
@@ -35,7 +38,7 @@ public class VistaAdministrarPropietarios implements ContratoVistaAdministrarPro
         System.out.println("2. Mostrar detalles de propietarios");
         System.out.println("3. Borrar Propietario");
         System.out.println("4. Actualizar Propietario");
-        System.out.println("5. Registrar vehiculo");
+        System.out.println("5. Registrar nuevo vehiculo");
         
         int opcion = validarNumero(1, 5);
         this.presentador.procesarOpcion(opcion);
@@ -105,5 +108,38 @@ public class VistaAdministrarPropietarios implements ContratoVistaAdministrarPro
         
         int opcion = validarNumero(1, 2);
         return opcion;
+    }
+    
+    @Override
+    public void pedirDatosNuevoVehiculo() {
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.println("Ingrese los datos del nuevo vehiculo");
+        System.out.print("Ingrese dominio: ");
+        String dominio = scan.next();
+        System.out.print("Ingrese la descripcion: ");
+        String descripcion = scan.next();
+        System.out.print("Ingrese nombre: ");
+        String nombre = scan.next();
+        
+        Marca FIAT = Marca.FIAT;
+        Marca PEUGEOT = Marca.PEUGEOT;
+        Marca AUDI = Marca.AUDI;
+        Marca VOLKSWAGEN = Marca.VOLKSWAGEN;
+        Marca RENAULT = Marca.RENAULT;
+        List<Marca> listaMarcas = new ArrayList();
+        listaMarcas.add(FIAT);
+        listaMarcas.add(PEUGEOT);
+        listaMarcas.add(AUDI);
+        listaMarcas.add(VOLKSWAGEN);
+        listaMarcas.add(RENAULT);
+        
+        int i = 0;
+        for(Marca marca: listaMarcas) {
+            System.out.println(i + " " + marca.toString());
+        }
+        System.out.println("Elija una de las marcas: ");
+        int marca = validarNumero(0, listaMarcas.size());
+        
     }
 }

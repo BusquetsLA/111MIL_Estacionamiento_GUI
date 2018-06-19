@@ -21,5 +21,6 @@ public interface ContratoVistaAdministrarPropietarios {
     public void mostrarPropietarios(ContratoProveedorPropietarios proveedor);
     public void pedirEleccionPropietarioEliminar(int cantPropietarios);
     public int pedirConfirmacionEliminacion(Propietario propietarioAEliminar);
+    public void pedirDatosNuevoVehiculo();
     
 }
