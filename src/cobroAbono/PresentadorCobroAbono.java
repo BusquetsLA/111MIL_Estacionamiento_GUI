@@ -5,8 +5,11 @@
  */
 package cobroAbono;
 
+import java.util.Date;
+import static metodosUtiles.Metodos.generarIncremento;
 import modelos.AbonoPropietario;
 import modelos.Propietario;
+import modelos.Ticket;
 import proveedorPropietarios.ContratoProveedorPropietarios;
 
 /**
@@ -85,8 +88,20 @@ public class PresentadorCobroAbono implements ContratoPresentadorCobroAbono {
         float saldoAnterior = this.abonoPropietario.getSaldoActual();
         this.abonoPropietario.agregarSaldo(monto);
         float saldoActual = this.abonoPropietario.getSaldoActual();
+        this.abonoPropietario.setFecha(new Date());
+        this.abonoPropietario.setNroComprobante(generarIncremento());
+        this.abonoPropietario.setMontoCobrado(monto);
+        
+        String nombre = this.propietario.getNombre();
+        String apellido = this.propietario.getApellido();
+        int dni = this.propietario.getDni();
+        int nroComprobante = generarIncremento();
+        Date fecha = new Date();
+        
+        Ticket ticket1 = new Ticket(nroComprobante, fecha, nombre, apellido, dni, monto, saldoActual);
 
         this.vista.mostrarAcreditacionSaldos(saldoAnterior, saldoActual, monto);
+        this.vista.imprimirTicket(ticket1);
         this.vista.lanzarMenuPrincipal();
     }
     

@@ -81,5 +81,9 @@ public class Propietario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Nombre: " + this.nombre + " Apellido: " + this.apellido + " DNI: " + this.dni;
+    }
 }

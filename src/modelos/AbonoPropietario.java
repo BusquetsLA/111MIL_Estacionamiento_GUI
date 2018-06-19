@@ -15,7 +15,6 @@ import java.util.List;
  */
 public class AbonoPropietario {
     private Date fecha;
-    private Date hora;
     private float montoCobrado;
     private int nroComprobante;
     private float saldoActual;
@@ -38,14 +37,14 @@ public class AbonoPropietario {
     
     
     public String conocerIngreso() {
-        String retorno = "Fecha: " + this.fecha + "\n" + "Hora: " + this.hora + "\n" + 
+        String retorno = "Fecha: " + this.fecha + "\n" + "\n" + 
                 "Nro comprobante" + this.nroComprobante;
     
         return retorno;
     }
 
     public void mostrarFechaYHora() {
-        System.out.println("Fecha: " + this.fecha + "\n" + "Hora: " + this.hora);
+        System.out.println("Fecha: " + this.fecha);
     }
 
     public void setFecha(Date fecha) {
@@ -62,10 +61,6 @@ public class AbonoPropietario {
 
     public void setSaldoActual(float saldoActual) {
         this.saldoActual = saldoActual;
-    }
-
-    public void setHora(Date hora) {
-        this.hora = hora;
     }
     
     public void agregarSaldo(float monto) {
@@ -86,9 +81,5 @@ public class AbonoPropietario {
 
     public float getSaldoActual() {
         return saldoActual;
-    }
-    
-    public Date getHora() {
-        return hora;
     }
 }

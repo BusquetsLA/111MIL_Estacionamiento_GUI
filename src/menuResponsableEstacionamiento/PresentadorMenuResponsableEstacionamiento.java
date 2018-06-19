@@ -33,12 +33,9 @@ public class PresentadorMenuResponsableEstacionamiento implements ContratoPresen
                 this.vista.lanzarAdministrarPropietarios();
                 break;
             case 3:
-                this.vista.lanzarAdministrarVehiculos();
-                break;
-            case 4:
                 this.vista.lanzarMenuEleccionAdministrador();
                 break;
-            case 5:
+            case 4:
                 this.vista.mostrarFinDePrograma();
                 break;
         }

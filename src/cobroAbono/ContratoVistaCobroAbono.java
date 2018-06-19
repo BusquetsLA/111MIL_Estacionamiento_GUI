@@ -7,6 +7,7 @@ package cobroAbono;
 
 import modelos.AbonoPropietario;
 import modelos.Propietario;
+import modelos.Ticket;
 import proveedorPropietarios.ContratoProveedorPropietarios;
 
 /**
@@ -24,5 +25,6 @@ public interface ContratoVistaCobroAbono {
     public void mostrarOperacionCancelada();
     public void mostrarPropietarioInexistente();
     public void lanzarMenuPrincipal();
+    public void imprimirTicket(Ticket ticket);
     
 }

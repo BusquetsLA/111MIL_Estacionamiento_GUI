@@ -10,6 +10,7 @@ import java.util.Scanner;
 import static metodosUtiles.Metodos.validarNumero;
 import modelos.AbonoPropietario;
 import modelos.Propietario;
+import modelos.Ticket;
 import proveedorPropietarios.ContratoProveedorPropietarios;
 
 /**
@@ -97,5 +98,10 @@ public class VistaCobroAbono implements ContratoVistaCobroAbono {
     @Override
     public void lanzarMenuPrincipal() {
         this.controlador.lanzarMenuResponsableEstacionamiento();
+    }
+    
+    @Override
+    public void imprimirTicket(Ticket ticket) {
+        System.out.println(ticket.toString());
     }
 }

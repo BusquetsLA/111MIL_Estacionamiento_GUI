@@ -31,11 +31,10 @@ public class VistaMenuResponsableEstacionamiento implements ContratoVistaMenuRes
         System.out.println("Ingrese una de las opciones...");
         System.out.println("1. Registrar cobro de abono");
         System.out.println("2. Administrar propietarios");
-        System.out.println("3. Administrar vehiculos");
-        System.out.println("4. Volver a Eleccion de Administrador");
-        System.out.println("5. Salir");
+        System.out.println("3. Volver a Eleccion de Administrador");
+        System.out.println("4. Salir");
         
-        int opcionSeleccionada = validarNumero(1, 5);
+        int opcionSeleccionada = validarNumero(1, 4);
         this.presentador.procesarOpcion(opcionSeleccionada);
     }
 
@@ -56,10 +55,10 @@ public class VistaMenuResponsableEstacionamiento implements ContratoVistaMenuRes
     
     @Override
     public void lanzarAdministrarPropietarios() {
-        System.out.println("Falta Implementar ...");
-        this.controlador.lanzarMenuResponsableEstacionamiento();
+        this.controlador.lanzarAdministrarPropietarios();
     }
     
+    @Override
     public void lanzarAdministrarVehiculos() {
         System.out.println("Falta Implementar ...");
         this.controlador.lanzarMenuResponsableEstacionamiento();

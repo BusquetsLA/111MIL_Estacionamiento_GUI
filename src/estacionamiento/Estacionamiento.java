@@ -5,6 +5,8 @@
  */
 package estacionamiento;
 
+import administrarPropietarios.ContratoVistaAdministrarPropietarios;
+import administrarPropietarios.VistaAdministrarPropietarios;
 import cobroAbono.ContratoVistaCobroAbono;
 import cobroAbono.VistaCobroAbono;
 import menuCajero.ContratoVistaMenuCajero;
@@ -30,6 +32,7 @@ public class Estacionamiento implements ContratoControladorVistas {
     private ContratoVistaCobroAbono vistaCobroAbono;
     private ContratoVistaEleccionAdministrador vistaEleccionTipoAdministrador;
     private ContratoVistaMenuCajero vistaMenuCajero;
+    private ContratoVistaAdministrarPropietarios vistaAdministrarPropietarios;
     
     
     public Estacionamiento() {
@@ -75,4 +78,7 @@ public class Estacionamiento implements ContratoControladorVistas {
         this.vistaMenuCajero = new VistaMenuCajero(this);
     }
     
+    public void lanzarAdministrarPropietarios() {
+        this.vistaAdministrarPropietarios = new VistaAdministrarPropietarios(this);
+    }
 }

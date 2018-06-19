@@ -13,6 +13,15 @@ import java.util.Scanner;
  */
 public class Metodos {
     
+    private static int numero;
+    
+    public static int generarIncremento() {
+        numero ++;
+        return numero;
+    }
+    
+    
+    
     /**
 	 * ESTA FUNCION SE ENCARGA DE VALIDAR NUMEROS.
 	 * VERIFICA QUE EL NUMERO SE ENCUENTRE DENTRO DE CIERTO RANGO AL LLAMAR LA FUNCION

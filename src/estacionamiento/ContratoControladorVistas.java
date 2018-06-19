@@ -21,5 +21,6 @@ public interface ContratoControladorVistas {
     public void lanzarCobroDeAbono();
     public void lanzarEleccionAdministrador();
     public void lanzarMenuCajero();
+    public void lanzarAdministrarPropietarios();
     
 }
