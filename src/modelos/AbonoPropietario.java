@@ -82,4 +82,20 @@ public class AbonoPropietario {
     public float getSaldoActual() {
         return saldoActual;
     }
+
+    public List<Ingreso> getIngresos() {
+        return ingresos;
+    }
+    
+    @Override
+    public String toString() {
+        String retorno = "Fecha: " + this.fecha + " MontoCobrado: " + this.montoCobrado + " Nro Comprobante: " + this.nroComprobante + " Saldo Actual: " + this.saldoActual + " Ingresos: " + "\n";
+        
+        for(Ingreso ing: this.ingresos) {
+            retorno += ing.toString() + "\n";
+        }
+        
+        return retorno;
+    }
+    
 }

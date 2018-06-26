@@ -6,10 +6,10 @@
 package administrarPropietarios;
 
 import estacionamiento.ContratoControladorVistas;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import static metodosUtiles.Metodos.validarNumero;
+import modelos.AbonoPropietario;
 import modelos.Marca;
 import modelos.Propietario;
 import proveedorPropietarios.ContratoProveedorPropietarios;
@@ -39,8 +39,10 @@ public class VistaAdministrarPropietarios implements ContratoVistaAdministrarPro
         System.out.println("3. Borrar Propietario");
         System.out.println("4. Actualizar Propietario");
         System.out.println("5. Registrar nuevo vehiculo");
+        System.out.println("6. Volver a menu de Responsable de Estacionamiento");
+        System.out.println("7. Salir");
         
-        int opcion = validarNumero(1, 5);
+        int opcion = validarNumero(1, 7);
         this.presentador.procesarOpcion(opcion);
     }
     
@@ -75,12 +77,11 @@ public class VistaAdministrarPropietarios implements ContratoVistaAdministrarPro
     }
     
     @Override
-    public void mostrarPropietarios(ContratoProveedorPropietarios proveedor) {
+    public void mostrarPropietarios(List<Propietario> propietarios, List<AbonoPropietario> abonos) {
         String detalles = "";
         int i = 0;
-        
-        for(Propietario propietario: proveedor.getPropietarios().keySet() ) {
-            detalles += i + "  " + propietario.toString() + "\n";
+        for(Propietario propietario: propietarios) {
+            detalles += i + ":  " + propietario.toString() + "Saldo Actual Abono: " + abonos.get(i).getSaldoActual() + "\n";
             i++;
         }
         
@@ -90,7 +91,7 @@ public class VistaAdministrarPropietarios implements ContratoVistaAdministrarPro
     @Override
     public void pedirEleccionPropietarioEliminar(int cantPropietarios) {
         System.out.println("Ingree un numero correspondiente al propietario a eliminar");
-        int indicePropietario = validarNumero(0, cantPropietarios);
+        int indicePropietario = validarNumero(0, cantPropietarios - 1);
         
         this.presentador.eliminarPropietario(indicePropietario);
     }
@@ -115,31 +116,49 @@ public class VistaAdministrarPropietarios implements ContratoVistaAdministrarPro
         Scanner scan = new Scanner(System.in);
         
         System.out.println("Ingrese los datos del nuevo vehiculo");
-        System.out.print("Ingrese dominio: ");
-        String dominio = scan.next();
-        System.out.print("Ingrese la descripcion: ");
-        String descripcion = scan.next();
-        System.out.print("Ingrese nombre: ");
-        String nombre = scan.next();
+        System.out.print("Ingrese dominio (patente):");
+        String dominio = scan.nextLine();
         
-        Marca FIAT = Marca.FIAT;
-        Marca PEUGEOT = Marca.PEUGEOT;
-        Marca AUDI = Marca.AUDI;
-        Marca VOLKSWAGEN = Marca.VOLKSWAGEN;
-        Marca RENAULT = Marca.RENAULT;
-        List<Marca> listaMarcas = new ArrayList();
-        listaMarcas.add(FIAT);
-        listaMarcas.add(PEUGEOT);
-        listaMarcas.add(AUDI);
-        listaMarcas.add(VOLKSWAGEN);
-        listaMarcas.add(RENAULT);
+        System.out.print("Ingrese la descripcion (Ej.: Utilitario 6 puertas ...):");
+        String descripcion = scan.nextLine();
         
+        System.out.print("Ingrese denominacion del vehiculo (Ej.: Utilitario):");
+        String denominacion = scan.nextLine();
+        
+        System.out.println("Ingrese un numero para elegir marca:");
+        List<Marca> marcas = this.presentador.getMarcas();     
         int i = 0;
-        for(Marca marca: listaMarcas) {
-            System.out.println(i + " " + marca.toString());
+        for(Marca marca: marcas) {
+            System.out.println(i + ": " + marca.toString());
+            i++;
         }
-        System.out.println("Elija una de las marcas: ");
-        int marca = validarNumero(0, listaMarcas.size());
+        int marcaElegida = validarNumero(0, marcas.size() - 1);
+        Marca marca = marcas.get(marcaElegida);
         
+        System.out.println("Ingrese modelo: ");
+        String modelo = scan.next();
+        
+        System.out.println("Ingrese propietario a quien pertenece nuevo vehiculo:");
+        List<Propietario> propietarios = this.presentador.getPropietarios();
+        i = 0;
+        for(Propietario propietario : propietarios) {
+            System.out.println(i + ": " + propietario.getNombre() + " " + propietario.getApellido() + "\n");
+            i++;
+        }
+        int propietarioElegido = validarNumero(0, propietarios.size() - 1);
+        Propietario propietario = propietarios.get(propietarioElegido);
+        
+        this.presentador.generarVehiculo(dominio, descripcion, denominacion, marca, modelo, propietario);
+    }
+    
+    
+    @Override
+    public void lanzarMenuResponsableEstacionamiento() {
+        this.controlador.lanzarMenuResponsableEstacionamiento();
+    }
+    
+    @Override
+    public void mostrarFinDePrograma() {
+        System.out.println("El programa ha terminado");
     }
 }

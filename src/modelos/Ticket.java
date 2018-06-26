@@ -6,6 +6,7 @@
 package modelos;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -21,9 +22,10 @@ public class Ticket {
     private int dniUsuario;
     private float importe;
     private float saldo;
+    private List<String> patentes;
 
     
-    public Ticket(int numero, Date fecha, String nombreUsuario, String apellidoUsuario, int dniUsuario, float importe, float saldo) {
+    public Ticket(int numero, Date fecha, String nombreUsuario, String apellidoUsuario, int dniUsuario, float importe, float saldo, List<String> patentes) {
         this.numero = numero;
         this.fecha = fecha;
         this.nombreUsuario = nombreUsuario;
@@ -31,6 +33,7 @@ public class Ticket {
         this.dniUsuario = dniUsuario;
         this.importe = importe;
         this.saldo = saldo;
+        this.patentes = patentes;
     }
 
     
@@ -53,6 +56,17 @@ public class Ticket {
         return numero;
     }
 
+    private String generarListaPatentes() {
+        String retorno = "";
+        
+        for(String patente: this.patentes) {
+            retorno += patente + " _ ";
+        }
+        
+        return retorno;
+    }
+    
+    
     @Override
     public String toString() {
         String retorno = "";
@@ -60,7 +74,7 @@ public class Ticket {
         retorno += "----------------------------------" + "\n" + this.denominacion + "\n" + "----------------------------------" + 
                 "\n" + this.dniUsuario + "   " + this.apellidoUsuario + "  " + this.nombreUsuario + "\n" + "Ticket N  | Descripcion     | Importe" + "\n" + 
                 "----------------------------------" + "\n" + this.generarNumero() + "      " + this.descripcion + "      " + this.importe + "\n" + 
-                "----------------------------------" + "\n" + "Importe Total: " + this.importe + "\n" + "Patente: "    + "\n" + "Credito Acual Playa: " + this.saldo + 
+                "----------------------------------" + "\n" + "Importe Total: " + this.importe + "\n" + "Patentes: " + this.generarListaPatentes() + "\n" + "Credito Acual Playa: " + this.saldo + 
                  "\n" + this.fecha;
         return retorno;
     }

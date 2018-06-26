@@ -3,23 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelos;
-
-import java.util.ArrayList;
-import java.util.List;
+package administrarPropietarios;
 
 /**
  *
- * @author utku33
+ * @author PC
  */
-public enum Marca {
-    
-    FIAT,
-    PEUGEOT,
-    AUDI,
-    VOLKSWAGEN,
-    RENAULT,
-    FORD,
-    TOYOTA;
+class AbonoPropietarios {
     
 }

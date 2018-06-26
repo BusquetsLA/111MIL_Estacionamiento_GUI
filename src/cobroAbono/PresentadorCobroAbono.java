@@ -5,11 +5,14 @@
  */
 package cobroAbono;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import static metodosUtiles.Metodos.generarIncremento;
 import modelos.AbonoPropietario;
 import modelos.Propietario;
 import modelos.Ticket;
+import modelos.Vehiculo;
 import proveedorPropietarios.ContratoProveedorPropietarios;
 
 /**
@@ -77,7 +80,6 @@ public class PresentadorCobroAbono implements ContratoPresentadorCobroAbono {
     private Propietario verificarDNI(int dni) {
         for(Propietario propietario : this.proveedorPropietarios.getPropietarios().keySet()) {
             if(dni == propietario.getDni()) {
-                System.out.println("el metodo verificador anda");
                 return propietario;
             }
         }
@@ -97,8 +99,12 @@ public class PresentadorCobroAbono implements ContratoPresentadorCobroAbono {
         int dni = this.propietario.getDni();
         int nroComprobante = generarIncremento();
         Date fecha = new Date();
+        List<String> patentes = new ArrayList();
+        for(Vehiculo vehiculo : this.propietario.getVehiculos()) {
+            patentes.add(vehiculo.getDominio());
+        }
         
-        Ticket ticket1 = new Ticket(nroComprobante, fecha, nombre, apellido, dni, monto, saldoActual);
+        Ticket ticket1 = new Ticket(nroComprobante, fecha, nombre, apellido, dni, monto, saldoActual, patentes);
 
         this.vista.mostrarAcreditacionSaldos(saldoAnterior, saldoActual, monto);
         this.vista.imprimirTicket(ticket1);

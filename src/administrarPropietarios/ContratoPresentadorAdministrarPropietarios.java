@@ -5,6 +5,10 @@
  */
 package administrarPropietarios;
 
+import java.util.List;
+import modelos.Marca;
+import modelos.Propietario;
+
 /**
  *
  * @author utku35
@@ -15,5 +19,8 @@ public interface ContratoPresentadorAdministrarPropietarios {
     public void procesarOpcion(int opcion);
     public void crearPropietarioNuevo(String nombre, String apellido, int dni);
     public void eliminarPropietario(int indicePropietario);
+    public List<Marca> getMarcas();
+    public List<Propietario> getPropietarios();
+    public void generarVehiculo(String dominio, String descripcion, String denominacion, Marca marca, String modelo, Propietario propietario);
     
 }

@@ -51,10 +51,13 @@ public class Propietario {
     }
     
     public float cuantosIngresosPeriodo(int cantidad) {
+        if(dni == 0) {
+            throw new IllegalArgumentException();
+        }
         return this.ingresos/cantidad;
     }
 
-    public List<Vehiculo> obtenerVehiculosPropietario() {
+    public List<Vehiculo> getVehiculos() {
         return this.vehiculos;
     }
     
@@ -70,20 +73,66 @@ public class Propietario {
         return nombre;
     }
 
+    public int getIngresos() {
+        return ingresos;
+    }
+
+    public AbonoPropietario getAbonoPropietario() {
+        return abonoPropietario;
+    }
+    
     public void setApellido(String apellido) {
+        if(apellido == null) {
+            throw new NullPointerException();
+        }
         this.apellido = apellido;
     }
 
     public void setDni(int dni) {
+        if(dni == 0) {
+            throw new IllegalArgumentException();
+        }
         this.dni = dni;
     }
 
     public void setNombre(String nombre) {
+        if(nombre == null) {
+            throw new NullPointerException();
+        }
         this.nombre = nombre;
     }
 
+    public void setIngresos(int ingresos) {
+        this.ingresos = ingresos;
+    }
+
+    public void agregarVehiculo(Vehiculo vehiculo) {
+        if(vehiculo == null) {
+            throw new NullPointerException();
+        }
+        this.vehiculos.add(vehiculo);
+    }
+    
     @Override
     public String toString() {
-        return "Nombre: " + this.nombre + " Apellido: " + this.apellido + " DNI: " + this.dni;
+        String retorno = "Nombre: " + this.nombre + " Apellido: " + this.apellido + " DNI: " + this.dni + " Vehiculos: " + "\n";
+        int i = 0;
+        for(Vehiculo vehiculo: vehiculos) {
+            retorno += vehiculo.toString() + "\n";
+        }
+        return retorno;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof Propietario) {
+            Propietario nuevo = (Propietario) o;
+            
+            if(this.nombre.equals(nuevo.getNombre()) && this.apellido.equals(nuevo.getApellido()) && this.dni == nuevo.getDni()
+                    && this.ingresos == nuevo.getIngresos() && this.abonoPropietario.equals(nuevo.getAbonoPropietario()) ) {
+                return true;
+            }
+        }
+        return false;
     }
 }

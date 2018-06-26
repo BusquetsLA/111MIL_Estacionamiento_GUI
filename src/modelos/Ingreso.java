@@ -15,8 +15,6 @@ public class Ingreso {
     private String codigoBarra;
     private Date fechaEgreso;
     private Date fechaIngreso;
-    private Date horaEgreso;
-    private Date horaIngreso;
     private float monto;
     private int nroTicket;
     private String observacion;
@@ -27,12 +25,10 @@ public class Ingreso {
     private Vehiculo vehiculo;
 
     
-    public Ingreso(String codigoBarra, Date fechaEgreso, Date fechaIngreso, Date horaEgreso, Date horaIngreso, float monto, int nroTicket, String observacion) {
+    public Ingreso(String codigoBarra, Date fechaEgreso, Date fechaIngreso, float monto, int nroTicket, String observacion) {
         this.codigoBarra = codigoBarra;
         this.fechaEgreso = fechaEgreso;
         this.fechaIngreso = fechaIngreso;
-        this.horaEgreso = horaEgreso;
-        this.horaIngreso = horaIngreso;
         this.monto = monto;
         this.nroTicket = nroTicket;
         this.observacion = observacion;

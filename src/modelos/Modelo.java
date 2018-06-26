@@ -9,17 +9,19 @@ package modelos;
  *
  * @author utku33
  */
-public enum Modelo {
-    
-    CORSA_1(Marca.FIAT, 33),
-    POLO_2(Marca.AUDI, 45);
-    
+public class Modelo {
     private Marca marca;
-    private int codigo;
+    private String modelo;
     
-    Modelo(Marca marca, int codigoModelo) {
+    
+    public Modelo(Marca marca, String modelo) {
         this.marca = marca;
-        this.codigo = codigoModelo;
+        this.modelo = modelo;
     }
+
     
+    @Override
+    public String toString() {
+        return "Marca: " + this.marca.name() + " Modelo: " + this.modelo;
+    }
 }

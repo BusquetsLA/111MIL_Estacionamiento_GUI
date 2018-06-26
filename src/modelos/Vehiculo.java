@@ -14,12 +14,12 @@ public class Vehiculo {
     // Atributos agregados
     private TipoVehiculo tipoVehiculo;
     private Modelo modelo;
-    private String patente;
 
     
-    public Vehiculo(String dominio) {
+    public Vehiculo(String dominio, TipoVehiculo tipoVehiculo, Modelo modelo) {
         this.dominio = dominio;
-        this.tipoVehiculo = new TipoVehiculo();
+        this.tipoVehiculo = tipoVehiculo;
+        this.modelo = modelo;
     }
 
     public Vehiculo() {
@@ -51,13 +51,8 @@ public class Vehiculo {
         this.tipoVehiculo = tipoVehiculo;
     }
 
-    public String getPatente() {
-        return patente;
+    @Override
+    public String toString() {
+        return "Dominio: " + this.dominio + " Tipo Vehiculo: " + this.tipoVehiculo.getNombre() + " " + this.modelo.toString();
     }
-
-    public void setPatente(String patente) {
-        this.patente = patente;
-    }
-    
-    
 }

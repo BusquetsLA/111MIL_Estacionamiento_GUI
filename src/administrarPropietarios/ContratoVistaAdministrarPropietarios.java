@@ -5,6 +5,8 @@
  */
 package administrarPropietarios;
 
+import java.util.List;
+import modelos.AbonoPropietario;
 import modelos.Propietario;
 import proveedorPropietarios.ContratoProveedorPropietarios;
 
@@ -18,9 +20,11 @@ public interface ContratoVistaAdministrarPropietarios {
     public void pedirDatosPropietarioNuevo();
     public ContratoProveedorPropietarios getProveedorPropietarios();
     public void mostrarPropietarioCreado(Propietario propietario);
-    public void mostrarPropietarios(ContratoProveedorPropietarios proveedor);
+    public void mostrarPropietarios(List<Propietario> propietarios, List<AbonoPropietario> abonos);
     public void pedirEleccionPropietarioEliminar(int cantPropietarios);
     public int pedirConfirmacionEliminacion(Propietario propietarioAEliminar);
     public void pedirDatosNuevoVehiculo();
+    public void lanzarMenuResponsableEstacionamiento();
+    public void mostrarFinDePrograma();
     
 }
