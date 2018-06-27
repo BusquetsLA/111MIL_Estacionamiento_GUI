@@ -5,6 +5,7 @@
  */
 package cobroAbono;
 
+import javafx.scene.Scene;
 import modelos.AbonoPropietario;
 import modelos.Propietario;
 import modelos.Ticket;
@@ -16,6 +17,15 @@ import proveedorPropietarios.ContratoProveedorPropietarios;
  */
 public interface ContratoVistaCobroAbono {
  
+    public void generarVista();
+    public Scene getScene();
+    
+    
+    
+    
+    
+    
+    
     public void mostrarVista();
     public ContratoProveedorPropietarios getProveedor();
     public void solicitarMonto();

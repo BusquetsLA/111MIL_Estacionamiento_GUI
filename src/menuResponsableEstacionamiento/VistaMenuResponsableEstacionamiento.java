@@ -89,8 +89,8 @@ public class VistaMenuResponsableEstacionamiento implements ContratoVistaMenuRes
         /**
          * Principal
          */
-        BorderPane panel = new BorderPane(contenedorSecundario);
-        this.scene = new Scene(panel, 800, 700);
+        BorderPane contenedorPrincipal = new BorderPane(contenedorSecundario);
+        this.scene = new Scene(contenedorPrincipal, 800, 700);
     }
     
     @Override

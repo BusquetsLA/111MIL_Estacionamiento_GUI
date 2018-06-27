@@ -90,7 +90,10 @@ public class Estacionamiento extends Application implements ContratoControladorV
 
     @Override
     public void lanzarCobroDeAbono() {
-        this.vistaCobroAbono = new VistaCobroAbono(this);
+        if(this.vistaCobroAbono == null) {
+            this.vistaCobroAbono = new VistaCobroAbono(this);
+        }
+        this.primaryStage.setScene(vistaCobroAbono.getScene());
     }
     
     @Override

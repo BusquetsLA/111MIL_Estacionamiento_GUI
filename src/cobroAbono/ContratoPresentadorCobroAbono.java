@@ -12,6 +12,12 @@ package cobroAbono;
 public interface ContratoPresentadorCobroAbono {
  
     public void iniciar();
+    
+    
+    
+    
+    
+    
     public void procesarDNI(int dni);
     public void procesarMonto(float monto);
     

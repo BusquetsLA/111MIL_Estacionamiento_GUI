@@ -35,8 +35,20 @@ public class PresentadorCobroAbono implements ContratoPresentadorCobroAbono {
     
     @Override
     public void iniciar() {
-        this.vista.mostrarVista();
+        this.vista.generarVista();
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     @Override
     public void procesarDNI(int dni) {
