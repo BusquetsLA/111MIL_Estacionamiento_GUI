@@ -19,7 +19,7 @@ public interface ContratoVistaCobroAbono {
  
     public void generarVista();
     public Scene getScene();
-    
+    public void campoDniIncorrecto();
     
     
     
@@ -34,7 +34,7 @@ public interface ContratoVistaCobroAbono {
     public void mostrarDatosPropietario(Propietario propietario, AbonoPropietario abono);
     public void mostrarOperacionCancelada();
     public void mostrarPropietarioInexistente();
-    public void lanzarMenuPrincipal();
+    public void lanzarMenuResponsableEstacionamiento();
     public void imprimirTicket(Ticket ticket);
     
 }

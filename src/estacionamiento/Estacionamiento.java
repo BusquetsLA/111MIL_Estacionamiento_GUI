@@ -54,7 +54,7 @@ public class Estacionamiento extends Application implements ContratoControladorV
         this.proveedorAdministradores = new ProveedorAdministradores();
         
         //this.lanzarEleccionAdministrador();
-        this.lanzarMenuResponsableEstacionamiento();
+        this.lanzarEleccionAdministrador();
                 
         this.primaryStage.setTitle("Estacionamiento");
         this.primaryStage.setResizable(false);

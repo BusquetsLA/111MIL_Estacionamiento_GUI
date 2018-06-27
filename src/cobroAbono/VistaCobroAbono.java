@@ -10,9 +10,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -22,6 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.StageStyle;
 import static metodosUtiles.Metodos.validarNumero;
 import modelos.AbonoPropietario;
 import modelos.Propietario;
@@ -54,6 +58,14 @@ public class VistaCobroAbono implements ContratoVistaCobroAbono {
         Button volverMenuRE = new Button("Volver");
         Button guardar = new Button("Guardar");
         Button cancelar = new Button("Cancelar");
+        
+        volverMenuRE.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    lanzarMenuResponsableEstacionamiento();
+                }
+                });
+        
         
         // Contenedor inferior
         HBox contenedorInferior = new HBox();
@@ -89,6 +101,13 @@ public class VistaCobroAbono implements ContratoVistaCobroAbono {
         imagenBuscador.setFitWidth(40);
         imagenBuscador.setFitHeight(40);
         Button buscar = new Button("", imagenBuscador);
+        buscar.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    // COMPROBAR QUE SEA NUMERO !!!
+                }
+                });
+        
         
         // Fila 5
         Label propietario = new Label("Propietario");
@@ -97,10 +116,12 @@ public class VistaCobroAbono implements ContratoVistaCobroAbono {
         // Fila 6
         Label apellido = new Label("Apellido: ");
         TextField campoApellido = new TextField();
+        campoApellido.setEditable(false);
         
         // Fila 7
         Label nombre = new Label("Nombre: ");
         TextField campoNombre = new TextField();
+        campoNombre.setEditable(false);
         
         // Fila 8
         Label estadoCuenta = new Label("Estado de cuenta");
@@ -113,6 +134,7 @@ public class VistaCobroAbono implements ContratoVistaCobroAbono {
         // Fila 10
         Label ingresarImporte = new Label("Ingresar importe: ");
         TextField campoIngresarImporte = new TextField();
+        campoIngresarImporte.setEditable(false);
     
         
         // Contenedores terciarios
@@ -243,6 +265,21 @@ public class VistaCobroAbono implements ContratoVistaCobroAbono {
         return this.scene;
     }
     
+    @Override
+    public void lanzarMenuResponsableEstacionamiento() {
+        this.controlador.lanzarMenuResponsableEstacionamiento();
+    }
+    
+    @Override
+    public void campoDniIncorrecto() {
+        Alert errorDeIngreso = new Alert(Alert.AlertType.ERROR);
+        errorDeIngreso.setTitle("Error de ejecucion");
+        errorDeIngreso.setHeaderText("Error en ingreso de dato");
+        errorDeIngreso.setContentText("Ingreso un dni invalido." + "\n" + "Por favor, intente nuevamente.");
+        errorDeIngreso.initStyle(StageStyle.UTILITY);
+        java.awt.Toolkit.getDefaultToolkit().beep();
+        errorDeIngreso.showAndWait();
+    }
     
     
     
@@ -317,11 +354,6 @@ public class VistaCobroAbono implements ContratoVistaCobroAbono {
     public void mostrarPropietarioInexistente() {
         System.out.println("No existe ningun propietario registrado con este DNI");
         System.out.println("Debe crear un propietario para poder acreditar un monto.");
-    }
-    
-    @Override
-    public void lanzarMenuPrincipal() {
-        this.controlador.lanzarMenuResponsableEstacionamiento();
     }
     
     @Override

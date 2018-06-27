@@ -68,7 +68,7 @@ public class PresentadorCobroAbono implements ContratoPresentadorCobroAbono {
         }
         else {
             this.vista.mostrarPropietarioInexistente();
-            this.vista.lanzarMenuPrincipal();
+            this.vista.lanzarMenuResponsableEstacionamiento();
         }
         
     }
@@ -83,7 +83,7 @@ public class PresentadorCobroAbono implements ContratoPresentadorCobroAbono {
                 break;
             case 2:
                 this.vista.mostrarOperacionCancelada();
-                this.vista.lanzarMenuPrincipal();
+                this.vista.lanzarMenuResponsableEstacionamiento();
                 break;
         }
         
@@ -120,7 +120,7 @@ public class PresentadorCobroAbono implements ContratoPresentadorCobroAbono {
 
         this.vista.mostrarAcreditacionSaldos(saldoAnterior, saldoActual, monto);
         this.vista.imprimirTicket(ticket1);
-        this.vista.lanzarMenuPrincipal();
+        this.vista.lanzarMenuResponsableEstacionamiento();
     }
     
     
