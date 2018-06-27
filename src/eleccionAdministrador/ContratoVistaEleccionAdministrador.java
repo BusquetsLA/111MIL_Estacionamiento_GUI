@@ -5,6 +5,7 @@
  */
 package eleccionAdministrador;
 
+import javafx.scene.Scene;
 import proveedorAdministradores.ContratoProveedorAdministradores;
 
 /**
@@ -13,12 +14,10 @@ import proveedorAdministradores.ContratoProveedorAdministradores;
  */
 public interface ContratoVistaEleccionAdministrador {
  
-    public ContratoProveedorAdministradores getProveedorAdministradores();
-    public void mostrarMenu();
-    public void pedirDatosIngresoResponsableEstacionamiento();
-    public void pedirDatosIngresoCajero();
-    public void mostrarFinDePrograma();
+    public void generarVista();
+    public Scene getScene();
     public void mostrarIngresoDatosIncorrecto();
+    public ContratoProveedorAdministradores getProveedorAdministradores();
     public void lanzarMenuResponsableEstacionamiento();
     public void lanzarMenuCajero();
     

@@ -18,35 +18,48 @@ import proveedorAdministradores.ProveedorAdministradores;
 import proveedorPropietarios.ProveedorPropietarios;
 import proveedorPropietarios.ContratoProveedorPropietarios;
 import eleccionAdministrador.ContratoVistaEleccionAdministrador;
+import javafx.application.Application;
+import static javafx.application.Application.launch;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import menuResponsableEstacionamiento.ContratoVistaMenuResponsableEstacionamiento;
 
 /**
  *
  * @author utku33
  */
-public class Estacionamiento implements ContratoControladorVistas {
+public class Estacionamiento extends Application implements ContratoControladorVistas {
     private ContratoProveedorPropietarios proveedorPropietarios;
     private ContratoProveedorAdministradores proveedorAdministradores;
     
-    private ContratoVistaMenuResponsableEstacionamiento vistaMenuPrincipal;
-    private ContratoVistaCobroAbono vistaCobroAbono;
-    private ContratoVistaEleccionAdministrador vistaEleccionTipoAdministrador;
-    private ContratoVistaMenuCajero vistaMenuCajero;
-    private ContratoVistaAdministrarPropietarios vistaAdministrarPropietarios;
+    private ContratoVistaMenuResponsableEstacionamiento vistaMenuResponsableEstacionamiento = null;
+    private ContratoVistaCobroAbono vistaCobroAbono = null;
+    private ContratoVistaEleccionAdministrador vistaEleccionAdministrador = null;
+    private ContratoVistaMenuCajero vistaMenuCajero = null;
+    private ContratoVistaAdministrarPropietarios vistaAdministrarPropietarios = null;
     
-    
-    public Estacionamiento() {
-        this.proveedorPropietarios = new ProveedorPropietarios();
-        this.proveedorAdministradores = new ProveedorAdministradores();
-    }
+    private Scene scene;
+    private Stage primaryStage;
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Estacionamiento estacionamientoUTN = new Estacionamiento();
-        estacionamientoUTN.lanzarEleccionAdministrador();
+        launch(args);
     }
+    
+    public void start(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+        this.proveedorPropietarios = new ProveedorPropietarios();
+        this.proveedorAdministradores = new ProveedorAdministradores();
+        
+        this.lanzarEleccionAdministrador();
+        
+        this.primaryStage.setTitle("Estacionamiento");
+        this.primaryStage.setResizable(false);
+        this.primaryStage.show();
+    }
+    
     
     @Override
     public ContratoProveedorPropietarios getProveedorPropietarios() {
@@ -60,12 +73,18 @@ public class Estacionamiento implements ContratoControladorVistas {
     
     @Override
     public void lanzarEleccionAdministrador() {
-        this.vistaEleccionTipoAdministrador = new VistaEleccionAdministrador(this);
+        if(this.vistaEleccionAdministrador == null) {
+            this.vistaEleccionAdministrador = new VistaEleccionAdministrador(this);
+        }
+        this.primaryStage.setScene(vistaEleccionAdministrador.getScene());
     }
     
     @Override
     public void lanzarMenuResponsableEstacionamiento() {
-        this.vistaMenuPrincipal = new VistaMenuResponsableEstacionamiento(this);
+        if(this.vistaMenuResponsableEstacionamiento == null) {
+            this.vistaMenuResponsableEstacionamiento = new VistaMenuResponsableEstacionamiento(this);
+        }
+        this.primaryStage.setScene(vistaMenuResponsableEstacionamiento.getScene());
     }
 
     @Override
@@ -78,6 +97,7 @@ public class Estacionamiento implements ContratoControladorVistas {
         this.vistaMenuCajero = new VistaMenuCajero(this);
     }
     
+    @Override
     public void lanzarAdministrarPropietarios() {
         this.vistaAdministrarPropietarios = new VistaAdministrarPropietarios(this);
     }

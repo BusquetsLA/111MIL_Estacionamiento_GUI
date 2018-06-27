@@ -20,7 +20,7 @@ public class PresentadorMenuResponsableEstacionamiento implements ContratoPresen
     
     @Override
     public void iniciar() {
-        this.vista.mostrarMenu();
+        this.vista.generarVista();
     }
     
     @Override

@@ -6,8 +6,22 @@
 package eleccionAdministrador;
 
 import estacionamiento.ContratoControladorVistas;
-import java.util.Scanner;
-import static metodosUtiles.Metodos.validarNumero;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.stage.StageStyle;
 import proveedorAdministradores.ContratoProveedorAdministradores;
 
 /**
@@ -17,6 +31,7 @@ import proveedorAdministradores.ContratoProveedorAdministradores;
 public class VistaEleccionAdministrador implements ContratoVistaEleccionAdministrador {
     private ContratoControladorVistas controlador;
     private ContratoPresentadorEleccionAdministrador presentador;
+    private Scene scene;
 
     
     public VistaEleccionAdministrador(ContratoControladorVistas controlador) {
@@ -25,67 +40,89 @@ public class VistaEleccionAdministrador implements ContratoVistaEleccionAdminist
         this.presentador.iniciar();
     }
     
+    
     @Override
     public ContratoProveedorAdministradores getProveedorAdministradores() {
         return this.controlador.getProveedorAdministradores();
     }
     
     @Override
-    public void mostrarMenu() {
-        System.out.println("");
-        System.out.println("*** Estacionamiento UTN ***");
-        System.out.println("Ingrese una de las opciones ...");
-        System.out.println("1. Ingresar como Responsable de Estacionamiento");
-        System.out.println("2. Ingresar como cajero");
-        System.out.println("3. Salir");
+    public void generarVista() {
+        /**
+         * CENTER - Contenedor Secundario
+         */
+        // Elementos del contenedor secundario
+        String urlUser = "/imagenes/user.png";
+        ImageView imagenUser = new ImageView(urlUser);
         
-        int opcionIngresada = validarNumero(1, 3);
-        this.presentador.procesarOpcion(opcionIngresada);
+        Label titulo = new Label("Ingreso de Usuario");
+        titulo.setFont(Font.font("Tahoma", FontWeight.NORMAL, 30));
+        titulo.setAlignment(Pos.CENTER);
+        
+        Label ingresoUsuario = new Label("Ingrese usuario");
+        ingresoUsuario.setFont(Font.font("Tahoma", FontWeight.NORMAL, 15));
+        ingresoUsuario.setAlignment(Pos.CENTER);
+        
+        TextField username = new TextField("");
+        username.setMaxSize(200, 20);
+        
+        Label ingresoContraseña = new Label("Ingrese contraseña");
+        ingresoContraseña.setFont(Font.font("Tahoma", FontWeight.NORMAL, 15));
+        ingresoContraseña.setAlignment(Pos.CENTER);
+        
+        TextField password = new TextField("");
+        password.setMaxSize(200, 20);
+        
+        Button login = new Button("Ingresar");
+        login.setMinSize(200, 30);
+        login.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            comprobarUsuario(username.getText(), password.getText());
+        }
+        });
+        
+        
+        // Creacion del contenedor secundario
+        VBox contenedorSecundario = new VBox();
+        contenedorSecundario.setPadding(new Insets(10));
+        contenedorSecundario.setSpacing(15);
+        contenedorSecundario.setAlignment(Pos.CENTER);
+        
+        contenedorSecundario.getChildren().add(imagenUser);
+        contenedorSecundario.getChildren().add(titulo);
+        contenedorSecundario.getChildren().add(ingresoUsuario);
+        contenedorSecundario.getChildren().add(username);
+        contenedorSecundario.getChildren().add(ingresoContraseña);
+        contenedorSecundario.getChildren().add(password);
+        contenedorSecundario.getChildren().add(login);
+        
+        /**
+         * Principal
+         */
+        BorderPane panel = new BorderPane();
+        panel.setCenter(contenedorSecundario);
+        this.scene = new Scene(panel, 800, 700);
     }
     
-    
-    @Override
-    public void pedirDatosIngresoResponsableEstacionamiento() {
-        Scanner scan = new Scanner(System.in);
-        String nombreUsuario;
-        String clave;
-        
-        System.out.println(" - - > Ingreso: Responsable de Estacionamiento");
-        System.out.println("Ingrese nombre de usuario");
-        System.out.print("> ");
-        nombreUsuario = scan.next();
-        System.out.println("Ingrese clave");
-        System.out.print("> ");
-        clave = scan.next();
-        
-        this.presentador.validarIngresoResponsableEstacionamiento(nombreUsuario, clave);
-    }
-    
-    @Override
-    public void pedirDatosIngresoCajero() {
-        Scanner scan = new Scanner(System.in);
-        String nombreUsuario;
-        String clave;
-        
-        System.out.println(" - - > Ingreso: Cajero");
-        System.out.println("Ingrese nombre de usuario");
-        System.out.print("> ");
-        nombreUsuario = scan.next();
-        System.out.println("Ingrese clave");
-        System.out.print("> ");
-        clave = scan.next();
-        
-        this.presentador.validarIngresoCajero(nombreUsuario, clave);
-    }
-    
-    @Override
-    public void mostrarFinDePrograma() {
-        System.out.println("El programa ha terminado");
+    private void comprobarUsuario(String usuario, String contraseña) {
+        this.presentador.comprobarUsuario(usuario, contraseña);
     }
     
     @Override
     public void mostrarIngresoDatosIncorrecto() {
-        System.out.println("Usuario o contraseña invalidos ...");
+        Alert errorDeIngreso = new Alert(AlertType.ERROR);
+        errorDeIngreso.setTitle("Error de Ingreso");
+        errorDeIngreso.setHeaderText("Ingreso de datos incorrecto");
+        errorDeIngreso.setContentText("Ha habido un error debido a un ingreso de datos incorrecto, del usuario o la contraseña." + "\n" + "Por favor, intente nuevamente.");
+        errorDeIngreso.initStyle(StageStyle.UTILITY);
+        java.awt.Toolkit.getDefaultToolkit().beep();
+        errorDeIngreso.showAndWait();
+    }
+    
+    @Override
+    public Scene getScene() {
+        return this.scene;
     }
     
     @Override

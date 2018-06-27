@@ -12,8 +12,6 @@ package eleccionAdministrador;
 public interface ContratoPresentadorEleccionAdministrador {
     
     public void iniciar();
-    public void procesarOpcion(int opcion);
-    public void validarIngresoResponsableEstacionamiento(String nombreUsuario, String clave);
-    public void validarIngresoCajero(String nombreUsuario, String clave);
+    public void comprobarUsuario(String usuario, String contraseña);
     
 }

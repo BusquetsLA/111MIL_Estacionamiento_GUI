@@ -5,17 +5,24 @@
  */
 package menuResponsableEstacionamiento;
 
+import javafx.scene.Scene;
+
 /**
  *
  * @author utku33
  */
 public interface ContratoVistaMenuResponsableEstacionamiento {
     
-    public void mostrarMenu();
+    public void generarVista();
+    public Scene getScene();
+    public void mostrarIngresoDatosIncorrecto();
     public void lanzarCobroDeAbono();
     public void lanzarMenuEleccionAdministrador();
-    public void mostrarFinDePrograma();
     public void lanzarAdministrarPropietarios();
-    public void lanzarAdministrarVehiculos();
+    
+    
+    public void mostrarMenu();
+    public void mostrarFinDePrograma();
+   
     
 }

@@ -25,77 +25,56 @@ public class PresentadorEleccionAdministrador implements ContratoPresentadorElec
     
     @Override
     public void iniciar() {
-        this.vista.mostrarMenu();
+        this.vista.generarVista();
     }
     
     @Override
-    public void procesarOpcion(int opcion) {
-        switch(opcion) {
-            case 1:
-                this.vista.pedirDatosIngresoResponsableEstacionamiento();
-                break;
-            case 2:
-                this.vista.pedirDatosIngresoCajero();
-                break;
-            case 3:
-                this.vista.mostrarFinDePrograma();
-                break;    
-        }
-    }
-    
-    @Override
-    public void validarIngresoResponsableEstacionamiento(String nombreUsuario, String clave) {
+    public void comprobarUsuario(String usuario, String contraseña) {
+        // Se comprueba que sea un responsable de estacionamiento
         boolean nombreUsuarioCorrecto = false;
         boolean claveCorrecta = false;
         Administrador administrador = null;
         
         for(Administrador admin: this.proveedorAdministradores.getResponsablesEstacionamiento()) {
-            if(nombreUsuario.equals(admin.getNombreUsuario())) {
+            if(usuario.equals(admin.getNombreUsuario())) {
                 administrador = admin;
                 nombreUsuarioCorrecto = true;
             }
         }
         
         if(nombreUsuarioCorrecto == true) {
-            if(clave.equals(administrador.getClave())) {
+            if(contraseña.equals(administrador.getClave())) {
                 claveCorrecta = true;
             }
         }
         
         if(claveCorrecta == true && nombreUsuarioCorrecto == true) {
             this.vista.lanzarMenuResponsableEstacionamiento();
+            return;
         }
-        else {
-            this.vista.mostrarIngresoDatosIncorrecto();
-            this.vista.mostrarMenu();
-        }
-    }
-    
-    @Override
-    public void validarIngresoCajero(String nombreUsuario, String clave) {
-        boolean nombreUsuarioCorrecto = false;
-        boolean claveCorrecta = false;
-        Administrador administrador = null;
         
+        
+        // Se comprueba que sea un cajero/a
         for(Administrador admin: this.proveedorAdministradores.getCajeros()) {
-            if(nombreUsuario.equals(admin.getNombreUsuario())) {
+            if(usuario.equals(admin.getNombreUsuario())) {
                 administrador = admin;
                 nombreUsuarioCorrecto = true;
             }
         }
         
         if(nombreUsuarioCorrecto == true) {
-            if(clave.equals(administrador.getClave())) {
+            if(contraseña.equals(administrador.getClave())) {
                 claveCorrecta = true;
             }
         }
         
         if(claveCorrecta == true && nombreUsuarioCorrecto == true) {
-            this.vista.lanzarMenuCajero();
+            System.out.println("MENU DE CAJERO/A NO IMPLEMENTADO AUN!!");
+            // this.vista.lanzarMenuCajero();
+            return;
         }
-        else {
-            this.vista.mostrarIngresoDatosIncorrecto();
-            this.vista.mostrarMenu();
-        }
+        
+        this.vista.mostrarIngresoDatosIncorrecto();
     }
+    
 }
