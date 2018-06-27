@@ -14,15 +14,11 @@ import javafx.scene.Scene;
 public interface ContratoVistaMenuResponsableEstacionamiento {
     
     public void generarVista();
+    public void mostrarMenu();
+    public void mostrarFinDePrograma();
     public Scene getScene();
-    public void mostrarIngresoDatosIncorrecto();
     public void lanzarCobroDeAbono();
     public void lanzarMenuEleccionAdministrador();
     public void lanzarAdministrarPropietarios();
-    
-    
-    public void mostrarMenu();
-    public void mostrarFinDePrograma();
-   
     
 }

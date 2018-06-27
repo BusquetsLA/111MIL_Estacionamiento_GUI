@@ -13,16 +13,10 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.stage.StageStyle;
 import static metodosUtiles.Metodos.validarNumero;
 
 /**
@@ -47,27 +41,7 @@ public class VistaMenuResponsableEstacionamiento implements ContratoVistaMenuRes
         /**
          * CENTER
          */
-        // Elementos de contenedores terciarios
-        String opcionCobroDeAbono = "Ingresar a esta opcion le permite cobrar un importe de abono, requiriendose un dni, importe, y que el propietario exista.";
-        String opcionAdministracionPropietarios = "Ingresar a esta opcion le permite ver detalles, agregar, eliminar, y/o actualizar propietarios o vehiculos de los mismos.";
-        String opcionInicioSesion = "Ingresar a esta opcion le permite ingresar con un usuario diferente.";
-        
-        
-        List<TextArea> labels = new ArrayList();
-        TextArea infoCobroDeAbono = new TextArea(opcionCobroDeAbono);
-        TextArea infoAdministracionPropietarios = new TextArea(opcionAdministracionPropietarios);
-        TextArea infoVolverAInicioSesion = new TextArea(opcionInicioSesion);
-        labels.add(infoCobroDeAbono);
-        labels.add(infoAdministracionPropietarios);
-        labels.add(infoVolverAInicioSesion);
-        
-        for(TextArea label : labels) {
-            label.setFont(Font.font("Tahoma", FontWeight.NORMAL, 15));
-            label.setMaxWidth(450);
-            label.setEditable(false);
-        }
-        
-        
+        // Elementos de contenedor secundario
         List<Button> botones = new ArrayList();
         Button cobroDeAbono = new Button("Cobro de Abono");
         Button administracionPropietarios = new Button("Administracion de Propietarios");
@@ -101,43 +75,14 @@ public class VistaMenuResponsableEstacionamiento implements ContratoVistaMenuRes
         });
         
         
-        // Elementos del contenedor Secundario
-        // Caracteristicas de los contenedores terciarios
-        List<HBox> contenedores = new ArrayList();
-        HBox contenedorTerciario1 = new HBox();
-        HBox contenedorTerciario2 = new HBox();
-        HBox contenedorTerciario3 = new HBox();
-        
-        contenedores.add(contenedorTerciario1);
-        contenedores.add(contenedorTerciario2);
-        contenedores.add(contenedorTerciario3);
-        
-        for(HBox contenedor : contenedores) {
-            contenedor.setPadding(new Insets(10));
-            contenedor.setSpacing(50);
-            contenedor.setAlignment(Pos.CENTER);
-            contenedor.setStyle("-fx-padding: 10;" + 
-                                "-fx-border-style: solid inside;" + 
-                                "-fx-border-width: 5;" +
-                                "-fx-border-insets: 5;" + 
-                                "-fx-border-radius: 5;" + 
-                                "-fx-border-color: #614B4B;");
-        }
-        
-        for(int i = 0 ; i < contenedores.size() ; i++) {
-            contenedores.get(i).getChildren().add(labels.get(i));
-            contenedores.get(i).getChildren().add(botones.get(i));
-        }
-        
-        
         // Caracteristicas del contenedor secundario
         VBox contenedorSecundario = new VBox();
         contenedorSecundario.setPadding(new Insets(10));
         contenedorSecundario.setSpacing(20);
         contenedorSecundario.setAlignment(Pos.CENTER);
         
-        for(HBox contenedor : contenedores) {
-            contenedorSecundario.getChildren().add(contenedor);
+        for(Button boton : botones) {
+            contenedorSecundario.getChildren().add(boton);
         }
         
         
@@ -152,19 +97,6 @@ public class VistaMenuResponsableEstacionamiento implements ContratoVistaMenuRes
     public Scene getScene() {
         return this.scene;
     }
-    
-    @Override
-    public void mostrarIngresoDatosIncorrecto() {
-        Alert errorDeIngreso = new Alert(Alert.AlertType.ERROR);
-        errorDeIngreso.setTitle("Error de Ingreso");
-        errorDeIngreso.setHeaderText("Ingreso de datos incorrecto");
-        errorDeIngreso.setContentText("Ha habido un error debido a un ingreso de datos incorrecto, del usuario o la contraseña." + "\n" + "Por favor, intente nuevamente.");
-        errorDeIngreso.initStyle(StageStyle.UTILITY);
-        java.awt.Toolkit.getDefaultToolkit().beep();
-        errorDeIngreso.showAndWait();
-    }
-    
-    
     
     @Override
     public void lanzarCobroDeAbono() {
