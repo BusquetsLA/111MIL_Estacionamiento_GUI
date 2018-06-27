@@ -14,18 +14,15 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.StageStyle;
-import proveedorAdministradores.ContratoProveedorAdministradores;
 import static metodosUtiles.Metodos.validarNumero;
 
 /**
@@ -56,18 +53,18 @@ public class VistaMenuResponsableEstacionamiento implements ContratoVistaMenuRes
         String opcionInicioSesion = "Ingresar a esta opcion le permite ingresar con un usuario diferente.";
         
         
-        List<Label> labels = new ArrayList();
-        Label infoCobroDeAbono = new Label(opcionCobroDeAbono);
-        Label infoAdministracionPropietarios = new Label(opcionAdministracionPropietarios);
-        Label infoVolverAInicioSesion = new Label(opcionInicioSesion);
+        List<TextArea> labels = new ArrayList();
+        TextArea infoCobroDeAbono = new TextArea(opcionCobroDeAbono);
+        TextArea infoAdministracionPropietarios = new TextArea(opcionAdministracionPropietarios);
+        TextArea infoVolverAInicioSesion = new TextArea(opcionInicioSesion);
         labels.add(infoCobroDeAbono);
         labels.add(infoAdministracionPropietarios);
         labels.add(infoVolverAInicioSesion);
         
-        for(Label label : labels) {
+        for(TextArea label : labels) {
             label.setFont(Font.font("Tahoma", FontWeight.NORMAL, 15));
-            label.setAlignment(Pos.CENTER);
-            label.setMaxWidth(50);
+            label.setMaxWidth(450);
+            label.setEditable(false);
         }
         
         
@@ -111,9 +108,14 @@ public class VistaMenuResponsableEstacionamiento implements ContratoVistaMenuRes
         HBox contenedorTerciario2 = new HBox();
         HBox contenedorTerciario3 = new HBox();
         
+        contenedores.add(contenedorTerciario1);
+        contenedores.add(contenedorTerciario2);
+        contenedores.add(contenedorTerciario3);
+        
         for(HBox contenedor : contenedores) {
             contenedor.setPadding(new Insets(10));
             contenedor.setSpacing(50);
+            contenedor.setAlignment(Pos.CENTER);
             contenedor.setStyle("-fx-padding: 10;" + 
                                 "-fx-border-style: solid inside;" + 
                                 "-fx-border-width: 5;" +
@@ -126,15 +128,13 @@ public class VistaMenuResponsableEstacionamiento implements ContratoVistaMenuRes
             contenedores.get(i).getChildren().add(labels.get(i));
             contenedores.get(i).getChildren().add(botones.get(i));
         }
-        contenedores.add(contenedorTerciario1);
-        contenedores.add(contenedorTerciario2);
-        contenedores.add(contenedorTerciario3);
         
         
         // Caracteristicas del contenedor secundario
         VBox contenedorSecundario = new VBox();
         contenedorSecundario.setPadding(new Insets(10));
         contenedorSecundario.setSpacing(20);
+        contenedorSecundario.setAlignment(Pos.CENTER);
         
         for(HBox contenedor : contenedores) {
             contenedorSecundario.getChildren().add(contenedor);
