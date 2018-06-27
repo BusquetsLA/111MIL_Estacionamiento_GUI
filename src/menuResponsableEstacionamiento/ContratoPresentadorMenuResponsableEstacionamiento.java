@@ -13,8 +13,4 @@ public interface ContratoPresentadorMenuResponsableEstacionamiento {
     
     public void iniciar();
     
-    
-    
-    public void procesarOpcion(int opcion);
-    
 }

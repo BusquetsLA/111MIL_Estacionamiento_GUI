@@ -15,7 +15,6 @@ public interface ContratoVistaMenuResponsableEstacionamiento {
     
     public void generarVista();
     public void mostrarMenu();
-    public void mostrarFinDePrograma();
     public Scene getScene();
     public void lanzarCobroDeAbono();
     public void lanzarMenuEleccionAdministrador();

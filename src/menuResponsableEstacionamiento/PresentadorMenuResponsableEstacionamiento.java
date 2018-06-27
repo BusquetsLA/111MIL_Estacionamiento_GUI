@@ -23,21 +23,4 @@ public class PresentadorMenuResponsableEstacionamiento implements ContratoPresen
         this.vista.generarVista();
     }
     
-    @Override
-    public void procesarOpcion(int opcion) {
-        switch(opcion) {
-            case 1:
-                this.vista.lanzarCobroDeAbono();
-                break;
-            case 2:
-                this.vista.lanzarAdministrarPropietarios();
-                break;
-            case 3:
-                this.vista.lanzarMenuEleccionAdministrador();
-                break;
-            case 4:
-                this.vista.mostrarFinDePrograma();
-                break;
-        }
-    }
 }
